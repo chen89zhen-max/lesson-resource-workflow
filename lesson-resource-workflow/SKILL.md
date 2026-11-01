@@ -4,12 +4,12 @@ display_name: 整堂课资源制作
 display_name_en: Lesson Resource Workflow
 description_zh: 为中职教师依次制作教案、学生工单及红字答案、可编辑课件和板书，并组织核验。
 description_en: Create coordinated vocational lesson plans, worksheets, answer sheets, editable slides and board plans with verification.
-version: "0.5.1"
+version: "0.5.4"
 author: "lesson-resource-workflow contributors"
 license: MIT
 description: 中职整堂课资源制作。依次完成教案DOCX、学生工单及原版红字答案DOCX、可编辑PPTX、汇总各阶段的板书DOCX，再进行独立审查与问题修复。内置无学校和个人标识的六类通用教学版式、磁学示例及投影与视觉核验规范。支持资源补齐和联动修改，SVG动画仅在教师明确选择后启用。
 metadata:
-  version: "0.5.1"
+  version: "0.5.4"
   language: zh-CN
 ---
 
@@ -25,6 +25,9 @@ metadata:
 
 教师明确删减或只补一项时尊重范围，沿用已有合格前序成果，不强制重做全部。仅咨询、评审或修改提示词时不启动备课；维护技能读[维护说明](references/maintain.md)。
 本技能组织宿主Agent执行，文本规则不是代码状态机，不提供独立模型或保证宿主具备子代理、渲染、文档制作能力。缺能力如实报告，不虚称执行。
+
+## 内容完整性门槛
+教案默认是可直接实施的详案，不限制总页数，学生列恢复约4.63cm；禁止为压页删减教学步骤。每次连堂课PPT至少12页有效教学内容，不含封面、目录、纯过渡、结束页，不固定总页数；六页起稿只提供版式。课程思政按教案M3先明确具体育人价值，主动挖掘真实专业联系并自然融入；技术规范或答对判断题不足以证明育人充分。PPT必须实际看原起稿/磁学示例，代表页对照后扩展，页数、内容、美学分别验收；同配色字号不等于模板保真。制作前与验收前必须读取[内容与美学验收](references/content-quality.md)，交付时按[独立审查](references/independent-review.md)汇总全部问题终态，不能把局部复核当整套通过。
 
 ## 1. 读取材料并确认当次条件
 新课题、新课次、新批次生成教案，按教案R2收齐授课专业、学生基础、授课类型、授课环境、教学资源、授课用途六项。可从材料预填，有问答工具则使用；教师明确确认可一次通过。历史记录、预选、沉默不能当作新课确认。已在同一任务明确确认的不重复询问。

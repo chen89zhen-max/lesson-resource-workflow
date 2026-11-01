@@ -5,6 +5,7 @@ Exit 1 = detected error. Exit 2 = rendering unavailable or intentionally omitted
 Dependencies: python-pptx, Pillow, lxml; LibreOffice + PyMuPDF or Poppler.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -97,6 +98,71 @@ def inspect(pptx, template=False):
     return {'slide_count': len(prs.slides), 'errors': list(dict.fromkeys(errors)), 'warnings': list(dict.fromkeys(warnings)), 'slides': stats}
 
 
+def inspect_teaching(pptx, manifest=None):
+    """Audit the declared teaching pages; semantic adequacy still needs review."""
+    errors = []
+    path = Path(manifest) if manifest else Path(pptx).with_suffix('.teaching-pages.json')
+    result = {'manifest': str(path), 'effective_teaching_pages': 0,
+              'minimum_effective_pages': 12, 'excluded_pages': [],
+              'teaching_review': 'pending: 逐页核对实际内容、任务、难点展开与反馈，清单不能自证教学合格。',
+              'errors': errors}
+    prs = Presentation(str(pptx))
+    if len(prs.slides) < 12:
+        errors.append('实际总页数不足12，不可能满足12页有效教学内容。')
+    try:
+        data = json.loads(path.read_text(encoding='utf-8-sig'))
+    except (OSError, ValueError) as exc:
+        errors.append('缺失或无法读取有效教学页清单：' + str(exc))
+        return result
+    if not isinstance(data, dict) or data.get('schema_version') != 1 or not isinstance(data.get('pages'), list):
+        errors.append('有效教学页清单须为schema_version=1且包含pages数组。')
+        return result
+    pages = data['pages']
+    numbers = [p.get('page') if isinstance(p, dict) else None for p in pages]
+    if any(type(n) is not int for n in numbers) or numbers != list(range(1, len(prs.slides)+1)):
+        errors.append('清单必须按实际顺序覆盖所有页面，page为连续且唯一的整数。')
+        return result
+    seen = {}
+    for item, slide in zip(pages, prs.slides):
+        number, role = item['page'], item.get('role')
+        if role not in {'teaching', 'cover', 'agenda', 'transition', 'closing'}:
+            errors.append(f'第{number}页role无效。')
+            continue
+        if role != 'teaching':
+            result['excluded_pages'].append(number)
+            continue
+        if any(not isinstance(item.get(key), str) or not item[key].strip()
+               for key in ['purpose', 'task_or_evidence']):
+            errors.append(f'第{number}页缺少具体purpose或task_or_evidence。')
+            continue
+        content = []
+        substantive = False
+        for shape in shapes_in(slide.shapes):
+            if shape.name.startswith('meta:'):
+                continue
+            text = shape.text_frame.text.strip() if shape.has_text_frame else ''
+            if shape.has_table:
+                text += '|'.join(cell.text for row in shape.table.rows for cell in row.cells)
+            if text or shape.shape_type == 13:
+                substantive = True
+            image_hash = hashlib.sha256(shape.image.blob).hexdigest() if shape.shape_type == 13 else ''
+            content.append((str(shape.shape_type), text, image_hash,
+                            shape.left, shape.top, shape.width, shape.height))
+        if not substantive:
+            # Pure diagram pages require human checking; don't count an unlabelled blank.
+            errors.append(f'第{number}页缺少可识别教学文字或图片，须补充可核对标签及教学内容。')
+            continue
+        signature = repr(content)
+        if signature in seen:
+            errors.append(f'第{number}页与第{seen[signature]}页教学内容完全重复，不能重复计数。')
+            continue
+        seen[signature] = number
+        result['effective_teaching_pages'] += 1
+    if result['effective_teaching_pages'] < 12:
+        errors.append(f"有效教学页仅{result['effective_teaching_pages']}，每次连堂课至少12页。")
+    return result
+
+
 def executable(explicit, name):
     if explicit:
         found = Path(explicit).expanduser()
@@ -175,6 +241,7 @@ def main():
     parser.add_argument('--render-dir', type=Path)
     parser.add_argument('--soffice')
     parser.add_argument('--pdftoppm')
+    parser.add_argument('--teaching-manifest', type=Path, help='有效教学页清单；默认同名.teaching-pages.json')
     parser.add_argument('--template', action='store_true', help='只用于通用模板自身，允许保留占位文字与备注')
     parser.add_argument('--structural-only', action='store_true', help='仅检查结构，退出码2表示渲染尚未完成')
     args = parser.parse_args()
@@ -182,6 +249,11 @@ def main():
     directory = (args.render_dir or pptx.parent/'_render_check'/pptx.stem).resolve()
     directory.mkdir(parents=True, exist_ok=True)
     result = inspect(pptx, args.template)
+    if not args.template:
+        result['teaching_content'] = inspect_teaching(pptx, args.teaching_manifest)
+        result['errors'].extend(result['teaching_content']['errors'])
+    else:
+        result['teaching_content'] = {'status': 'not_applicable: 仅模板维护，不能用作课堂成品验收。'}
     result['render_complete'] = False
     result['visual_review'] = 'pending: 必须另行逐页看图，核对美学与专业图示。'
     if not args.structural_only:

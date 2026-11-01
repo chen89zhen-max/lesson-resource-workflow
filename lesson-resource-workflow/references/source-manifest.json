@@ -1,5 +1,5 @@
 {
-  "version": "0.5.1",
+  "version": "0.5.4",
   "distribution": "public-generic",
   "files": [
     {
@@ -24,13 +24,13 @@
     },
     {
       "package_path": "prompts/lesson-design.txt",
-      "sha256": "b3eb3f8762ce7606653db690cad2d9d1e2d324b59db4c448a0b44e0920e4d4c7",
-      "size": 55320
+      "sha256": "22782179322625f6f504d60e5e33889cb3308231677d72f3a49abd1f81b24237",
+      "size": 59189
     },
     {
       "package_path": "prompts/slides.txt",
-      "sha256": "f2ca7e3d622b0bb3a4fadf5a6232360ca6b68043933d1fc2d6a1626bdd76cfa1",
-      "size": 29941
+      "sha256": "6a1cc1ae9737ee306a77b4807fb0a7c1aad034ee755862816ece0aaf3e276229",
+      "size": 32399
     },
     {
       "package_path": "prompts/worksheet.txt",
@@ -53,34 +53,39 @@
       "size": 923
     },
     {
+      "package_path": "references/content-quality.md",
+      "sha256": "2a0e274d93f569283bb780df0132f08a1fe460e46287103ef899acd477a122eb",
+      "size": 4436
+    },
+    {
       "package_path": "references/independent-review.md",
-      "sha256": "bad127c441c164f037ad4c352b3e877cd88a44a55f8d6fe3f35c2bf89507ebec",
-      "size": 4217
+      "sha256": "0ce0e01773badff768d1ccd6be058aa61e53dea487604f5a12473d259af4d4a8",
+      "size": 6031
     },
     {
       "package_path": "references/maintain.md",
-      "sha256": "ca668e12306383575274dd91a012c9f1a0d3c4ec68efd145b8552cc721e8a259",
-      "size": 1557
+      "sha256": "8a2c9575aff2eed1516b15e4ab1c7f821909551c7fab68be883402674e1bb15c",
+      "size": 1815
     },
     {
       "package_path": "references/modules.md",
-      "sha256": "4c356eefea258322b8c1a7c297e3f4285f74997cd20e0593b911edfc5def3925",
-      "size": 2035
+      "sha256": "9d8a89817e95aac42ae876f8251d2a7e50e76420bc0665e48aadc28d0b07464f",
+      "size": 2190
     },
     {
       "package_path": "references/ppt-template.md",
-      "sha256": "02c4c2daa4d31ed10ce4c33f876eb8f6e476e51a82f91bdb791135e982a2bfb9",
-      "size": 7055
+      "sha256": "623d42b1d80c56bddbead90242615025d22e1b4d5a7880bf79228a9ca0233054",
+      "size": 8007
     },
     {
       "package_path": "references/workflow.md",
-      "sha256": "623eeac4f0d81959a397835656f5ad1049f38167b9c2c6eb71d4b3e0b3eaeeef",
-      "size": 7742
+      "sha256": "410056dd4f5beff8370e77fc21a8790cd758f8007cb49ac69a09085fe3fbfd6a",
+      "size": 8496
     },
     {
       "package_path": "scripts/check_deck.py",
-      "sha256": "4c4a9b55b8d98909b7dc35d6378be4e4b41b509a113604fde93a21e6a1953d19",
-      "size": 10101
+      "sha256": "b0ec4cd6d9398abfc1e329dc545ed071943cbb63cebb672226c3c20739f4daaf",
+      "size": 14150
     },
     {
       "package_path": "scripts/init_deck.py",
@@ -94,8 +99,8 @@
     },
     {
       "package_path": "SKILL.md",
-      "sha256": "571eaa5b2d54f5b05bff607b754f087365ebe1e6b6ee7abe0e5f12a79ce762a2",
-      "size": 10187
+      "sha256": "b79d7a5eb5cdf42c2ec9cfcbfe0e5bbab8b0bd0ee9fa1eb695bed532e9c8da3d",
+      "size": 11017
     },
     {
       "package_path": "templates/vocational_teaching.pptx",
