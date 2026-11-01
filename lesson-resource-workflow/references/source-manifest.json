@@ -1,0 +1,106 @@
+{
+  "version": "0.5.1",
+  "distribution": "public-generic",
+  "files": [
+    {
+      "package_path": "examples/magnetism-six-slides.pptx",
+      "sha256": "6d6221c30bf77ab7ee0ecb24efff3e0ad43fe42c7c59c3625b92e25949f2fdb5",
+      "size": 3741024
+    },
+    {
+      "package_path": "LICENSE",
+      "sha256": "14f87125eb42e083f11ff2510f1d20579794e425e39f2640143d6117a8d361a8",
+      "size": 1115
+    },
+    {
+      "package_path": "prompts/animation.txt",
+      "sha256": "d9c93ed54dd3a161e185bde38e6e201026c87f5f549de59c7e5ecb61ebbf123b",
+      "size": 19598
+    },
+    {
+      "package_path": "prompts/board-plan.txt",
+      "sha256": "e968d036d182ea1200b11001a65d63f26e3410dee809d60c9b113847b7d411ad",
+      "size": 6750
+    },
+    {
+      "package_path": "prompts/lesson-design.txt",
+      "sha256": "b3eb3f8762ce7606653db690cad2d9d1e2d324b59db4c448a0b44e0920e4d4c7",
+      "size": 55320
+    },
+    {
+      "package_path": "prompts/slides.txt",
+      "sha256": "f2ca7e3d622b0bb3a4fadf5a6232360ca6b68043933d1fc2d6a1626bdd76cfa1",
+      "size": 29941
+    },
+    {
+      "package_path": "prompts/worksheet.txt",
+      "sha256": "767818e8e9188af41d9f2a170ac47f82dcdb064730f305f21b89191e308947a5",
+      "size": 8275
+    },
+    {
+      "package_path": "references/animation-workflow.md",
+      "sha256": "a6fb3f892c271513a53f80845ca56ec6c969344977501741b90be438b3cd9d8a",
+      "size": 2644
+    },
+    {
+      "package_path": "references/attribution.md",
+      "sha256": "4183c0afe9623f7b78509f7f04826b4b0c776f218e8cd4933ac0e1b3ba73c7d8",
+      "size": 823
+    },
+    {
+      "package_path": "references/companion-resources.md",
+      "sha256": "af79b6c02a34eabd94485f78a980c0e2c24f0acd9e3b0f46e047e8600995257f",
+      "size": 923
+    },
+    {
+      "package_path": "references/independent-review.md",
+      "sha256": "bad127c441c164f037ad4c352b3e877cd88a44a55f8d6fe3f35c2bf89507ebec",
+      "size": 4217
+    },
+    {
+      "package_path": "references/maintain.md",
+      "sha256": "ca668e12306383575274dd91a012c9f1a0d3c4ec68efd145b8552cc721e8a259",
+      "size": 1557
+    },
+    {
+      "package_path": "references/modules.md",
+      "sha256": "4c356eefea258322b8c1a7c297e3f4285f74997cd20e0593b911edfc5def3925",
+      "size": 2035
+    },
+    {
+      "package_path": "references/ppt-template.md",
+      "sha256": "02c4c2daa4d31ed10ce4c33f876eb8f6e476e51a82f91bdb791135e982a2bfb9",
+      "size": 7055
+    },
+    {
+      "package_path": "references/workflow.md",
+      "sha256": "623eeac4f0d81959a397835656f5ad1049f38167b9c2c6eb71d4b3e0b3eaeeef",
+      "size": 7742
+    },
+    {
+      "package_path": "scripts/check_deck.py",
+      "sha256": "4c4a9b55b8d98909b7dc35d6378be4e4b41b509a113604fde93a21e6a1953d19",
+      "size": 10101
+    },
+    {
+      "package_path": "scripts/init_deck.py",
+      "sha256": "3c5aa405d38f6079289023208723251077c02b0d8426b9c1335dc800c49bccf3",
+      "size": 958
+    },
+    {
+      "package_path": "scripts/requirements.txt",
+      "sha256": "bc70cbb62c370730222560dc27421409aaaa6c365c0fe75955695a5c2f5d3e45",
+      "size": 117
+    },
+    {
+      "package_path": "SKILL.md",
+      "sha256": "571eaa5b2d54f5b05bff607b754f087365ebe1e6b6ee7abe0e5f12a79ce762a2",
+      "size": 10187
+    },
+    {
+      "package_path": "templates/vocational_teaching.pptx",
+      "sha256": "362f870ef6b865fe5dd8512fbc5579ed873ee77af37104a2ec3023184a3db959",
+      "size": 45441
+    }
+  ]
+}
